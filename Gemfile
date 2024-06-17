@@ -14,8 +14,6 @@ gem "pg", "~> 1.1"
 # For Authentication and Authorization
 gem 'devise', '~> 4.9', '>= 4.9.4'
 
-# For AciveAdmin
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 

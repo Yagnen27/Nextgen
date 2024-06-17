@@ -1,8 +1,91 @@
-<% if user_signed_in? %>
-    <div>Welcome <%= current_user.email %></div>
-    <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
-<% else %>
- <%= button_to "Sign in", new_user_session_path %>
-<% end %> 
-<h1>Welcome To NextGen Technologies</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome To NextGen Technologies Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px; /* Added margin bottom to separate from buttons */
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .btn-container button {
+      padding: 10px 20px;
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .btn-container button:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+<body>
 
+  <div>Welcome <%= current_user.email %></div>
+
+  <h1>Welcome To NextGen Technologies Admin Panel</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>              
+        <th>Department</th>                  
+        <th>Address</th>
+        <th>Salary</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @employees.each do |employee| %>
+        <tr>
+          <td><%= employee.name %></td>        
+          <td><%= employee.department %></td>
+          <td><%= employee.address %></td>     
+          <td><%= employee.salary %></td>         
+          <td><%= employee.email %></td>         
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="btn-container">
+    <% if user_signed_in? %>
+      <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= button_to "Sign in", new_user_session_path %>
+    <% end %>
+  </div>
+
+</body>
+</html>
