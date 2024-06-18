@@ -1,28 +1,45 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="container">
+  <h2>Log in</h2>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
+  <form action="<%= session_path(resource_name) %>" method="post" class="form">
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" autocomplete="email" autofocus required>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password" required>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field remember-me">
+        <input type="checkbox" id="remember_me" name="remember_me">
+        <label for="remember_me">Remember me</label>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <button type="submit">Log in</button>
+    </div>
+  </form>
+
+  <div class="reset-password">
+    <a href="<%= edit_user_password_url(reset_password_token: @token, host: 'www.example.com') %>">Reset My Password</a>
   </div>
-<% end %>
 
-<%= link_to 'Reset My Password', edit_user_password_url(reset_password_token: @token, host: 'www.example.com') %>
+  <%= render "users/shared/links" %>
+</div>
 
-<%= render "users/shared/links" %>
+</body>
+</html>
