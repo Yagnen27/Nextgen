@@ -13,7 +13,7 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
-      redirect_to @employee, notice: 'Employee was successfully created.'
+      redirect_to root_path, notice: 'Employee was successfully created.'
     else
       render :new
     end
@@ -31,13 +31,11 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @employees = Employee.all
   end
 
   def destroy
-    @employee = Employee.find(params[:id])
     @employee.destroy
-    redirect_to employees_path, notice: 'Employee was successfully deleted.'
+    redirect_to root_path, notice: 'Employee was successfully deleted.'
   end
 
   private

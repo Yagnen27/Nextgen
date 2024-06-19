@@ -59,7 +59,6 @@
   <table>
     <thead>
       <tr>
-        <th>Id</th>
         <th>Name</th>              
         <th>Department</th>                  
         <th>Address</th>
@@ -71,15 +70,14 @@
     <tbody>
       <% @employees.each do |employee| %>
         <tr>
-          <td><%= employee.id %></td>
           <td><%= employee.name %></td>        
           <td><%= employee.department %></td>
           <td><%= employee.address %></td>     
           <td><%= employee.salary %></td>         
           <td><%= employee.email %></td>  
           <td>
-            <%= link_to 'Edit', edit_employee_path(employee) %>
-            <%= link_to 'Delete', employee_path(employee), method: :delete, data: { confirm: 'Are you sure?' } %> 
+            <%= button_to 'Edit', edit_employee_path(employee), method: :get, class: 'edit-button' %>
+            <%= button_to 'Delete', employee_path(employee), method: :delete, data: { confirm: 'Are you sure?' } %> 
           </td>        
         </tr>
       <% end %>
@@ -92,6 +90,10 @@
     <% else %>
       <%= button_to "Sign in", new_user_session_path %>
     <% end %>
+  </div>
+
+  <div class="btn-container">
+    <%= link_to 'New Employee', new_employee_path, class: 'btn' %>
   </div>
 
 </body>
