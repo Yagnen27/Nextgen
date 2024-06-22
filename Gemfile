@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.0"
+ruby "3.3.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
@@ -13,6 +13,13 @@ gem "pg", "~> 1.1"
 
 # For Authentication and Authorization
 gem 'devise', '~> 4.9', '>= 4.9.4'
+
+# For Active Admin 
+gem 'activeadmin'
+gem 'active_skin'
+
+# For saasc-rails Gem
+gem "sassc-rails"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
