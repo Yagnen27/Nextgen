@@ -14,12 +14,12 @@ ActiveAdmin.register Employee do
 
     form do |f|
         f.inputs "Employee Details" do
-            f.iinput :name
-            f.iinput :department
-            f.iinput :address
-            f.iinput :salary
-            f.iinput :email
-            f.iinput :password
+            f.input :name
+            f.input :department
+            f.input :address
+            f.input :salary
+            f.input :email
+            f.input :password
         end
         f.actions
     end

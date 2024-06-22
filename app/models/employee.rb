@@ -1,18 +1,13 @@
 class Employee < ApplicationRecord
+  # Include any necessary modules and associations here
 
-  validates :name, presence: true
-  validates :department, presence: true
-  validates :address, presence: true
-  validates :salary, presence: true, numericality: { greater_than: 0 }
-  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  # Explicitly allowlisting attributes for Ransack
+  def self.ransackable_attributes(auth_object = nil)
+    ["address", "created_at", "department", "email", "id", "name", "salary", "updated_at"]
+  end
 
-  validates :password, presence: true, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
-
-  validate :custom_validation_method
-
-  private
-
-  def custom_validation_method
-    true
+  # You can also specify ransackable associations if needed
+  def self.ransackable_associations(auth_object = nil)
+    []
   end
 end
